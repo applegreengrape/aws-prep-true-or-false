@@ -11,22 +11,14 @@ const Index = () => {
   return (
     <>
       <div className="bg-gradient-to-r from-green-400 to-blue-500 h-screen">
-        <div className="flex w-full items-start justify-start">
-          <div>
-            <img src={img} width="110" />
-          </div>
-          <div className="items-center text-white text-3xl p-8 font-mono w-full bg-gradient-to-r from-pink-500 to-yellow-500 ">
-            <p>AWS SA Pro Quiz: True or False</p>
-          </div>
+        <div className="items-center text-white text-xl p-6 font-mono w-full bg-gradient-to-r from-pink-500 to-yellow-500 ">
+          <p>AWS SA Pro Quiz: True or False</p>
         </div>
         <div>
-          <div className="flex flex-col items-center text-2xl p-12 text-gray-100 font-mono">
+          <div className="flex flex-col items-center text-base p-4 text-gray-100 font-mono">
             <div className="p-8">
               Welcome, I've put some of my notes into True or False quizzes to
-              make the cert prep a little bit more fun :) Most of my notes are
-              coming from 👉 : Jon Bonso | AWS Certified Solutions Architect
-              Professional Practice Exam. 🎩 Hats off to Jon Bonso, his practice
-              test is amazing!
+              make the cert prep a little bit more fun :)
               <br />
               <br />
               Most of my notes are coming from 👉 :{" "}

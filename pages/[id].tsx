@@ -38,49 +38,44 @@ const ID: NextPage<{ data }> = (props) => {
   }
   return (
     <>
-      <div className="bg-gradient-to-r from-green-400 to-blue-500 h-screen">
-        <div className="flex w-full items-start justify-start">
-          <div>
-            <img src={img} width="110" />
-          </div>
-          <div className="items-center text-white text-3xl p-8 font-mono w-full bg-gradient-to-r from-pink-500 to-yellow-500 ">
-            <p>AWS SA Pro Quiz: True or False</p>
-          </div>
+      <div className="bg-gradient-to-r from-green-400 to-blue-500 h-screen w-full">
+        <div className="items-center text-white text-xl p-6 font-mono w-full bg-gradient-to-r from-pink-500 to-yellow-500 ">
+          <p>AWS SA Pro Quiz: True or False</p>
         </div>
 
-        <div className="flex flex-col items-center text-2xl p-12  text-gray-100 font-mono">
+        <div className="flex flex-col items-center text-base p-12 text-gray-100 font-mono">
           {props.data.item}
           <div className="flex p-8">
-            <div className="flex-1 p-2 px-8">
+            <div className="flex-1 px-8">
               <button
                 type="button"
                 value="true"
-                className="bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 px-12 py-2 rounded-md"
+                className="bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 w-40 py-2 rounded-md"
                 onClick={(e) => check((e.target as HTMLInputElement).value)}
               >
                 True
               </button>
             </div>
-            <div className="flex-1 p-2 px-8">
+            <div className="flex-1 px-8">
               <button
                 type="button"
                 value="false"
-                className="bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 px-8 py-2 rounded-md"
+                className="bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 w-40 py-2 rounded-md"
                 onClick={(e) => check((e.target as HTMLInputElement).value)}
               >
-                false
+                False
               </button>
             </div>
           </div>
           <button
             type="button"
-            className="w-auto bg-gradient-to-r from-green-600 to-blue-600 hover:from-pink-600 hover:to-yellow-600 px-36 py-2 rounded-md"
+            className="w-auto bg-gradient-to-r from-green-600 to-blue-600 hover:from-pink-600 hover:to-yellow-600 w-1/3 py-2 rounded-md"
             onClick={() => next()}
           >
             Next
           </button>
         </div>
-        <div className="flex flex-col items-center text-xl p-12 text-gray-100 font-mono">
+        <div className="flex flex-col items-center text-base p-12 text-gray-100 font-mono">
           {c}
           <br />
           {msg}
