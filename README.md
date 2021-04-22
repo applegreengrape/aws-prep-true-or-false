@@ -6,4 +6,4 @@ AWS SA Pro true or false quizzes
 
 ![quiz](./img/quiz.png)
 
-<img src="./img/logo.png" width="100" height="100">
+<img src="./img/logo.png" width="200" height="200">
