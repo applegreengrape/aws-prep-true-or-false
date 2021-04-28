@@ -3,7 +3,7 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import img from "../img/1.png";
 
-const url = "https://study-with-me-applegreengrape.vercel.app";
+const url = process.env.URL || "http://localhost:3000";
 
 const Index = () => {
   const router = useRouter();
