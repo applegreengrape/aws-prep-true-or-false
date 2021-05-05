@@ -18,7 +18,7 @@ const ID: NextPage<{ data }> = (props) => {
 
   function next() {
     if (Number(id) + 1 > 3) {
-      alert("oops, no more items. ");
+      alert("oops, no more items. more quizzes yet to come");
     } else {
       setCheck("");
       setMsg("");
