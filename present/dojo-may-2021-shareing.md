@@ -8,7 +8,7 @@ Next.js is an open-source React front-end development web framework created by V
 (that we will cover within this workshop)
 - dynamic routes
 - server side rendering
-- built-in API & CORS
+- built-in API
 - fully integrated with tailwindcss & typescript
 
 more cool features? yep! you can check out the [online tutorial](https://nextjs.org/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website)
