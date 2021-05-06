@@ -4,7 +4,8 @@
 ## What is Next.js?
 Next.js is an open-source React front-end development web framework created by Vercel that enables functionality such as server-side rendering and generating static websites for React based web applications.
 
-## Cool features about Next.js we will cover within this workshop
+## Cool features about Next.js
+(that we will cover within this workshop)
 - dynamic routes
 - server side rendering
 - built-in API & CORS
