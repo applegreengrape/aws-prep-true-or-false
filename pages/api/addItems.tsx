@@ -3,13 +3,10 @@ import firebase from "./firebaseConfig";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const db = firebase.firestore();
+  const { q, ans, reason } = req.query;
   async function push2Firebase() {
-    let question = "You can sync two RDS MySQL master databases that both accept writes on their respective regions.";
-    let ans = "false";
-    let reason =
-      "S3 is not a filesystem, it has its own object access API hence it cannot support POSIX file functions. But EBS and EFS are POSIX-compliant";
-    let item = {
-      q: question,
+      let item = {
+      q: q,
       ans: ans,
       reason: reason,
     };

@@ -1,87 +1,76 @@
 import React from "react";
 import ErrorPage from "next/error";
-import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
-import img from "../img/1.png";
 
 const url = process.env.URL || "http://localhost:3000";
 
-const ID: NextPage<{ data }> = (props) => {
+const Add = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const [item, setItem] = React.useState(String);
+  const [answer, setAnswer] = React.useState(String);
+  const [reason, setReason] = React.useState(String);
 
-  const [c, setCheck] = React.useState(String);
-  const [msg, setMsg] = React.useState(String);
-  if (!props.data) {
-    return <ErrorPage statusCode={404} />;
+  const addItem = async () => {
+    const params = new URLSearchParams({
+        q: item,
+        ans: answer,
+        reason: reason,
+      });
+      let apiUrl = `${url}/api/addItems?${params.toString()}`;
+      const res = await fetch(apiUrl);
+      const data = await res.json();
   }
 
-  function next() {
-    if (Number(id) + 1 > 3) {
-      alert("oops, no more items. ");
-    } else {
-      setCheck("");
-      setMsg("");
-      router.push(`${url}/${Number(id) + 1}`);
-    }
-  }
-
-  function check(val) {
-    console.log(val, props.data.ans);
-    if (val === `${props.data.ans}`) {
-      setCheck(`🎉 correct`);
-      setMsg(props.data.reason);
-    } else {
-      setCheck(`❌ Oops Wrong Answer`);
-      setMsg(props.data.reason);
-    }
-  }
   return (
     <>
-      <div className="bg-gradient-to-r from-green-500 to-blue-500 h-screen w-full">
+      <div className="bg-gradient-to-r from-green-400 to-blue-500 h-screen">
         <div className="items-center text-white text-xl p-6 font-mono w-full bg-gradient-to-r from-pink-500 to-yellow-500 ">
           <p>AWS SA Pro Quiz: True or False</p>
         </div>
-
-        <div className="flex flex-col items-center text-base p-12 text-gray-100 font-mono">
-          {props.data.item}
-          <div className="flex p-8">
-            <div className="flex-1 px-8">
-              <button
-                type="button"
-                value="true"
-                className="bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 w-40 py-2 rounded-md"
-                onClick={(e) => check((e.target as HTMLInputElement).value)}
-              >
-                True
-              </button>
+        <div>
+          <div className="flex flex-col items-center text-base p-4 text-gray-100 font-mono">
+            <div className="p-8">
+              Thanks for adding quizzes
+              <br />
             </div>
-            <div className="flex-1 px-8">
-              <button
-                type="button"
-                value="false"
-                className="bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 w-40 py-2 rounded-md"
-                onClick={(e) => check((e.target as HTMLInputElement).value)}
-              >
-                False
-              </button>
+            <div className="p-4">
+                quiz:
+            <input
+              type="text"
+              className="form-input px-4 py-3 text-gray-500 rounded"
+              value={item}
+              onChange={(e) => setItem(e.target.value)}
+            ></input>
             </div>
+            <div className="p-4">
+                right answer:
+            <input
+              type="text"
+              className="form-input px-4 py-3 text-gray-500 rounded"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+            ></input>
+            </div>
+            <div className="p-4">
+                reason:
+            <input
+              type="text"
+              className="form-input px-4 py-3 text-gray-500 rounded"
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+            ></input>
+            </div>
+            <button
+              type="button"
+              className="w-auto bg-gradient-to-r from-green-600 to-blue-600 hover:from-pink-600 hover:to-yellow-600 px-36 py-2 rounded-md"
+              onClick={addItem}
+            >
+              submit
+            </button>
           </div>
-          <button
-            type="button"
-            className="w-auto bg-gradient-to-r from-green-600 to-blue-600 hover:from-pink-600 hover:to-yellow-600 w-1/3 py-2 rounded-md"
-            onClick={() => next()}
-          >
-            Next
-          </button>
-        </div>
-        <div className="flex flex-col items-center text-base p-12 text-gray-100 font-mono">
-          {c}
-          <br />
-          {msg}
         </div>
       </div>
-      <footer className="footer p-3 bg-gradient-to-r from-pink-500 to-yellow-500 h-auto">
+      <footer className="footer p-3 bg-gradient-to-r from-pink-500 to-yellow-500 h-auto font-mono">
         special thanks to <a href="https://twitter.com/alazycoder2">🧑🏻‍💻</a>
         <div className="flex w-auto justify-end">
           <div className="px-8">
@@ -123,24 +112,4 @@ const ID: NextPage<{ data }> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  res,
-  params,
-}) => {
-  try {
-    const { id } = params;
-    const result = await fetch(`${url}/api?id=${id}`);
-    const data = await result.json();
-
-    return {
-      props: { data },
-    };
-  } catch {
-    res.statusCode = 404;
-    return {
-      props: {},
-    };
-  }
-};
-
-export default ID;
+export default Add;
